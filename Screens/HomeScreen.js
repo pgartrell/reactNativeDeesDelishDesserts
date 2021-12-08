@@ -6,7 +6,7 @@ import { popularProductData } from "../Data/Data";
 
 function HomeScreen() {
   return (
-    <React.Fragment>
+    <View style={styles.homeContainer}>
       <SafeAreaView>
         <ScrollView>
           <Card>
@@ -31,7 +31,7 @@ function HomeScreen() {
           <PopularProducts />
         </ScrollView>
       </SafeAreaView>
-    </React.Fragment>
+    </View>
   );
 }
 
@@ -56,11 +56,11 @@ const PopularProducts = () => {
   return (
     <View style={styles.popularProductView}>
       <Header
-        style={{backgroundColor: "pink"}}
+        containerStyle={{backgroundColor: "#FF1493", justifyContent:"space-evenly"}}
         placement="center"
         leftComponent={{ color: "#fff" }}
-        centerComponent={{ text: "Popular Products", style: { color: "black", fontSize: 20 } }}
-        rightComponent={{ color: "#fff" }}
+        centerComponent={{ text: "Popular Products", style: { color: "black", fontSize: 20, fontWeight: "bold" } }}
+        // rightComponent={{ color: "#fff" }}
       />
       {list()}
     </View>
@@ -68,6 +68,9 @@ const PopularProducts = () => {
 };
 
 const styles = StyleSheet.create({
+  homeContainer:{
+    backgroundColor: "pink"
+  },
   aboveButton: {
     margin: 0,
     alignItems: "center",
