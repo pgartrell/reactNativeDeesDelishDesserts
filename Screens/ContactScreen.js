@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { View, TextInput, Button } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  ScrollView
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function ContactScreen() {
   const [name, setName] = useState("");
@@ -28,36 +36,72 @@ function ContactScreen() {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <TextInput
-        type="text"
-        onChange={handleNameInput}
-        value={name}
-        placeholder="Your Name"
-      />
-      <TextInput
-        type="text"
-        onChange={handleAddressInput}
-        value={address}
-        placeholder="Your Address"
-      />
-      <TextInput
-        type="text"
-        onChange={handleDessertInput}
-        value={dessertType}
-        placeholder="Your Dessert Type"
-      />
-      <TextInput
-        type="text"
-        onChange={handleContactInput}
-        value={contact}
-        placeholder="Your Contact Info"
-      />
-      <Button className="btn btn-large right" onClick={logInfo} title= "Submit">
-        "Submit"
-      </Button>
+    <View style={styles.container}>
+      <SafeAreaView>
+        <ScrollView>
+          <TextInput
+            style={styles.input}
+            type="text"
+            onChange={handleNameInput}
+            value={name}
+            placeholder="Your Name"
+          />
+          <TextInput
+            style={styles.input}
+            type="text"
+            onChange={handleAddressInput}
+            value={address}
+            placeholder="Your Address"
+          />
+          <TextInput
+            style={styles.input}
+            type="text"
+            onChange={handleDessertInput}
+            value={dessertType}
+            placeholder="Your Dessert Type"
+          />
+          <TextInput
+            style={styles.input}
+            type="text"
+            onChange={handleContactInput}
+            value={contact}
+            placeholder="Your Contact Info"
+          />
+
+          <TouchableOpacity
+            className="btn btn-large right"
+            style={styles.submitButton}
+            onPress={logInfo}
+          >
+            <Text style={styles.submitButtonText}> Submit </Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 23,
+    backgroundColor: "pink",
+  },
+  input: {
+    margin: 15,
+    height: 40,
+    borderColor: "#7a42f4",
+    borderWidth: 1,
+    paddingLeft: 30,
+  },
+  submitButton: {
+    backgroundColor: "#7a42f4",
+    padding: 10,
+    margin: 15,
+    height: 40,
+  },
+  submitButtonText: {
+    color: "white",
+  },
+});
 
 export default ContactScreen;
