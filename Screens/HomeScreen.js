@@ -1,36 +1,40 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { Card, Button, Icon, Image, Header } from "react-native-elements";
+import { View, Text, StyleSheet, ScrollView, ImageBackground } from "react-native";
+import { Card, Button, Image} from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { popularProductData } from "../Data/Data";
+
 
 function HomeScreen() {
   return (
     <View style={styles.homeContainer}>
+      <ImageBackground source={require("../assets/images/background-texture-darkPink.jpg")} style={{width:"100%"}}> 
       <SafeAreaView>
         <ScrollView>
-          <Card>
+          <Card style={styles.mainCard}>
             <Card.Title style={styles.logo}>Dees Delish Desserts</Card.Title>
-            <Text style={styles.aboveButton}>Want a bite?</Text>
+            <Text style={styles.wantABite}>Want a bite?</Text>
             <Card.Divider />
-            <Card.Image
+            <Card.Image style={styles.cardImage}
               source={require("../assets/images/goldenCheescake.jpg")}
             />
           </Card>
-          <Button
-            icon={<Icon name="code" color="#ffffff" />}
+          <Button style={styles.contactButton}           
             buttonStyle={{
-              borderRadius: 0,
+              borderRadius: 3,
               marginTop: 20,
               marginLeft: 50,
               marginRight: 50,
               marginBottom: 20,
+              type: "outline",
+              color: "#DC143C"
             }}
-            title="Contact"
+            title="Click for Contact Info"
           />
           <PopularProducts />
         </ScrollView>
       </SafeAreaView>
+      </ImageBackground>
     </View>
   );
 }
@@ -55,23 +59,28 @@ const PopularProducts = () => {
   };
   return (
     <View style={styles.popularProductView}>
-      <Header
-        containerStyle={{backgroundColor: "#FF1493", justifyContent:"space-evenly"}}
-        placement="center"
-        leftComponent={{ color: "#fff" }}
-        centerComponent={{ text: "Popular Products", style: { color: "black", fontSize: 20, fontWeight: "bold" } }}
-        // rightComponent={{ color: "#fff" }}
-      />
+      <View style={styles.popularProductHeaderView}>
+        <Text style={styles.popularProductHeaderText}>Popular Products</Text>
+      </View>
       {list()}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  homeContainer:{
-    backgroundColor: "pink"
+  mainCard:{
+    alignSelf: "stretch",
+    width: 100,
+    marginBottom: 50
   },
-  aboveButton: {
+  cardImage:{
+    width: 400,
+    height: 400,
+  },
+  homeContainer: {
+    backgroundColor: "pink",
+  },
+  wantABite: {
     margin: 0,
     alignItems: "center",
     justifyContent: "center",
@@ -88,7 +97,24 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: "center",
     alignItems: "center",
+    flex: 0.3,
   },
+  popularProductHeaderView:{
+    backgroundColor: "#DC143C", 
+    flex: 0.3,
+    paddingLeft: 100, 
+    paddingRight: 100,
+    paddingTop: 15,
+    paddingBottom: 15,
+    borderRadius: 3
+
+  },
+  popularProductHeaderText:{
+    fontSize: 22,
+    fontWeight: "bold"
+
+  },
+
 });
 
 export default HomeScreen;

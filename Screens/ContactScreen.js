@@ -39,6 +39,7 @@ function ContactScreen() {
     <View style={styles.container}>
       <SafeAreaView>
         <ScrollView>
+          <Text style={styles.title}>Order Request</Text>
           <TextInput
             style={styles.input}
             type="text"
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 23,
     backgroundColor: "pink",
+    flex: 1
   },
   input: {
     margin: 15,
@@ -102,6 +104,11 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: "white",
   },
+  title:{
+    padding: 60,
+    textAlign: "center",
+    fontSize: 30
+  }
 });
 
 export default ContactScreen;
